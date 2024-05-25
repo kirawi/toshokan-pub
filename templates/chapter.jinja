@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ chapter_title }}</title>
+</head>
+<body>
+    <h1>{{ work_title }}</h1>
+    <h3>{{ chapter_title }}</h3>
+    {% for e in entries %}
+    <p>
+      {{ e }} 
+    </p>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <p>{{ description }}</p>
+    <p>
+        {% for c in creators %} {{ c.name }} {% endfor %}
+    </p>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for chapter in chapters %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td><a href="{{uuid}}/{{chapter.id}}">{{ chapter.title }}</td>
+                <td>{{ chapter.date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,7 +1,7 @@
+use axum::{http::StatusCode, response::IntoResponse};
+
 #[derive(Debug)]
 pub enum LibraryError {
-    /// If the [`Book`] already exists in the library
-    Exists(String),
     /// If the book does not exist
     Missing(String),
 }
@@ -9,14 +9,21 @@ pub enum LibraryError {
 impl std::fmt::Display for LibraryError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            LibraryError::Exists(title) => {
-                f.write_str(&format!("{title} is already in the library!"))
-            }
             LibraryError::Missing(title) => {
-                f.write_str(&format!("{title} does not exist in the library!"))
+                f.write_str(&format!("{} does not exist in the library!", title))
             }
         }
     }
 }
 
 impl std::error::Error for LibraryError {}
+
+impl IntoResponse for LibraryError {
+    fn into_response(self) -> axum::response::Response {
+        (
+            StatusCode::NOT_FOUND,
+            format!("The requested work was not found"),
+        )
+            .into_response()
+    }
+}

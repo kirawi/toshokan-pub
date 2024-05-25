@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <a href="/signup">Sign up</a>
+    <a href="/login">Log in</a>
+    <h1>Active Works</h1>
+    <ul>
+        {% for work in active_works %}
+            <li>{{ work.title }}</li>
+        {% endfor %}
+    </ul>
+    <h1>All Works</h1>
+    <ul>
+        {% for work in works %}
+            <li><a href="works/{{ work.title }}/{{ work.uuid }}">{{ work.title }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+

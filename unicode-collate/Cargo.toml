@@ -1,0 +1,11 @@
+[package]
+name = "unicode-collate"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+uca-generate = { path = "../uca-generate" }
+
+unicode-normalization = "0.1"
+# icu_normalizer = "1.5"
+unicode-canonical-combining-class = "0.5"
